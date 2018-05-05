@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyBasicCalendar</string>
+    <string name="main_button">Button</string>
+    <string name="menu_add">Add</string>
+    <string name="menu_remove">Remove</string>
+    <string name="menu_after_add">add success</string>
+    <string name="menu_after_remove">remove success</string>
+</resources>
