@@ -5,4 +5,14 @@
     <string name="menu_remove">Remove</string>
     <string name="menu_after_add">add success</string>
     <string name="menu_after_remove">remove success</string>
+    <string name="text_monday">星期一</string>
+    <string name="text_tuesday">星期二</string>
+    <string name="text_wensday">星期三</string>
+    <string name="text_thursday">星期四</string>
+    <string name="text_friday">星期五</string>
+    <string name="text_saturday">星期六</string>
+    <string name="text_sunday">星期日</string>
+    <string name="button_prev_month">上个月</string>
+    <string name="button_next_month">下个月</string>
+    <string name="button_today">今天</string>
 </resources>

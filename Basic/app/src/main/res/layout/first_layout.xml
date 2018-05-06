@@ -3,17 +3,88 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/main_button" />
+        android:layout_weight="1">
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_sunday"
+            android:textSize="14.0dip" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_monday"
+            android:textSize="14.0dip" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_tuesday"
+            android:textSize="14.0dip" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_wensday"
+            android:textSize="14.0dip" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_thursday"
+            android:textSize="14.0dip" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_friday"
+            android:textSize="14.0dip" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:text="@string/text_saturday"
+            android:textSize="14.0dip" />
+    </LinearLayout>
+
     <GridView
         android:id="@+id/grid_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="7"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
         android:clickable="true"
-        android:columnWidth="55.0dip">
-    </GridView>
+        android:columnWidth="55.0dip"
+        android:numColumns="7"></GridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    <Button
+        android:id="@+id/buttonPrevMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_prev_month"/>
+    <Button
+        android:id="@+id/buttonNextMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_next_month"/>
+        <Button
+            android:id="@+id/buttonToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_today"/>
+     </LinearLayout>
 </LinearLayout>

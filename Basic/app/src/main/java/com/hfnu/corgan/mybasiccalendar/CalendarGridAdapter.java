@@ -1,6 +1,7 @@
 package com.hfnu.corgan.mybasiccalendar;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,29 +44,32 @@ public class CalendarGridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = LayoutInflater.from(context).inflate(R.layout.date_item, parent, false);
         TextView text = view.findViewById(R.id.date_item_text);
+        Calendar date = getDate(position);
+        if (date.equals(Calendar.getInstance()))
+            text.setBackgroundColor(Color.GRAY);
         text.setText(getDate(position).get(Calendar.DAY_OF_MONTH) + "");
         return view;
     }
 
-    public Calendar getDate(int position){
+    private Calendar getDate(int position){
         // 日历按星期排序，第一天为星期天
         Calendar firstDateOfMonth = firstDayOfMonth(Calendar.getInstance());
         firstDateOfMonth.add(Calendar.DATE, position - getWeekDayOfFirstDateOfMonth(firstDateOfMonth));
         return firstDateOfMonth;
     }
 
-    public Calendar firstDayOfMonth(Calendar date){
+    private Calendar firstDayOfMonth(Calendar date){
         date.set(Calendar.DAY_OF_MONTH, 1);
         return date;
     }
 
-    public int getWeekDayOfFirstDateOfMonth(Calendar date){
+    private int getWeekDayOfFirstDateOfMonth(Calendar date){
         // 星期的编号从1开始，1代表星期日
         int firstDateInWeek = date.get(Calendar.DAY_OF_WEEK);
         return firstDateInWeek - 1;
     }
 
-    public boolean isLeapYear(int year){
+    private boolean isLeapYear(int year){
         if (year % 4 == 0){
             if (year % 100 == 0)
                 if (year % 400 == 0)
