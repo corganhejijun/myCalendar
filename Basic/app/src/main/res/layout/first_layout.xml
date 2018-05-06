@@ -65,6 +65,7 @@
         android:layout_weight="10"
         android:clickable="true"
         android:columnWidth="55.0dip"
+        android:focusable="true"
         android:numColumns="7"></GridView>
 
     <LinearLayout

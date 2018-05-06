@@ -15,4 +15,8 @@
     <string name="button_prev_month">上个月</string>
     <string name="button_next_month">下个月</string>
     <string name="button_today">今天</string>
+    <string name="text_calendar_title">标题</string>
+    <string name="text_calendar_begin_time">开始时间</string>
+    <string name="text_calendar_end_time">结束时间</string>
+    <string name="text_OK">确定</string>
 </resources>

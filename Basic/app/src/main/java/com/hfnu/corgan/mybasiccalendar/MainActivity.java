@@ -1,5 +1,6 @@
 package com.hfnu.corgan.mybasiccalendar;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,15 +18,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
-        CalendarGridAdapter gridAdpter = new CalendarGridAdapter(this, Calendar.getInstance());
+        final CalendarGridAdapter gridAdpter = new CalendarGridAdapter(this, Calendar.getInstance());
         GridView gridView = findViewById(R.id.grid_view);
         gridView.setAdapter(gridAdpter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, AddCalendarActivity.class);
+                intent.putExtra("date", gridAdpter.getDateString(position));
+                startActivityForResult(intent, 0);
                 Toast.makeText(MainActivity.this, position + " " + id, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+         if (requestCode == 0 && resultCode == 0){
+
+         }
     }
 
     @Override

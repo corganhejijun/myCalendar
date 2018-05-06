@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CalendarGridAdapter extends BaseAdapter {
@@ -49,6 +50,12 @@ public class CalendarGridAdapter extends BaseAdapter {
             text.setBackgroundColor(Color.GRAY);
         text.setText(getDate(position).get(Calendar.DAY_OF_MONTH) + "");
         return view;
+    }
+
+    public String getDateString(int position){
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String formatted = format1.format(getDate(position).getTime());
+        return formatted;
     }
 
     private Calendar getDate(int position){
