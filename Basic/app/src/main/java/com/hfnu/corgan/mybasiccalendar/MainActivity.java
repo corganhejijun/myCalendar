@@ -7,19 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
         final CalendarGridAdapter gridAdpter = new CalendarGridAdapter(this, Calendar.getInstance());
-        GridView gridView = findViewById(R.id.grid_view);
+        final GridView gridView = findViewById(R.id.grid_view);
+        MainActivity.this.setTitle(gridAdpter.getMonthString());
         gridView.setAdapter(gridAdpter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -27,7 +29,33 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, AddCalendarActivity.class);
                 intent.putExtra("date", gridAdpter.getDateString(position));
                 startActivityForResult(intent, 0);
-                Toast.makeText(MainActivity.this, position + " " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
+        Button btnPrev = findViewById(R.id.buttonPrevMonth);
+        btnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gridAdpter.setPrevMonth();
+                gridView.invalidateViews();
+                MainActivity.this.setTitle(gridAdpter.getMonthString());
+            }
+        });
+        Button btnNext = findViewById(R.id.buttonNextMonth);
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gridAdpter.setNextMonth();
+                gridView.invalidateViews();
+                MainActivity.this.setTitle(gridAdpter.getMonthString());
+            }
+        });
+        Button btnToday = findViewById(R.id.buttonToday);
+        btnToday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gridAdpter.setCurrentMonth();
+                gridView.invalidateViews();
+                MainActivity.this.setTitle(gridAdpter.getMonthString());
             }
         });
     }
