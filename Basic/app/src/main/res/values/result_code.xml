@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="login_ok">1</integer>
+    <integer name="login_failed">2</integer>
+    <integer name="register_ok">3</integer>
+</resources>

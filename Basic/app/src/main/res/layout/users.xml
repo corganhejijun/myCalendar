@@ -5,32 +5,40 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_calendar_title" />
+        android:text="@string/text_username"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_add_calendar_title"/>
+        android:id="@+id/user_username"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_calendar_begin_time"/>
-    <Button
-        android:id="@+id/editText_add_calendar_begin_time"
+        android:text="@string/text_password"/>
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_add_begin_time"/>
+        android:id="@+id/user_passord"
+        android:inputType="textPassword"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_calendar_end_time"/>
-    <Button
+        android:text="@string/text_confirm"
+        android:visibility="invisible"
+        android:id="@+id/user_confirm_text"/>
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_add_calendar_end_time"
-        android:text="@string/text_add_end_time"/>
+        android:visibility="invisible"
+        android:id="@+id/user_confirm_password"
+        android:inputType="textPassword"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_OK"
-        android:id="@+id/button_add_calendar"/>
+        android:id="@+id/user_login"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_register"
+        android:id="@+id/user_register"/>
 </LinearLayout>

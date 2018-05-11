@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">MyBasicCalendar</string>
-    <string name="main_button">Button</string>
-    <string name="menu_add">Add</string>
-    <string name="menu_remove">Remove</string>
-    <string name="menu_after_add">add success</string>
-    <string name="menu_after_remove">remove success</string>
+    <string name="menu_user">登录</string>
+    <string name="menu_logout">注销</string>
+    <string name="message_login_success">登录成功</string>
+    <string name="message_login_fail">登录失败</string>
+    <string name="message_register_success">注册成功</string>
     <string name="text_monday">星期一</string>
     <string name="text_tuesday">星期二</string>
     <string name="text_wensday">星期三</string>
@@ -12,6 +12,8 @@
     <string name="text_friday">星期五</string>
     <string name="text_saturday">星期六</string>
     <string name="text_sunday">星期日</string>
+    <string name="text_add_begin_time">添加开始时间</string>
+    <string name="text_add_end_time">添加结束时间</string>
     <string name="button_prev_month">上个月</string>
     <string name="button_next_month">下个月</string>
     <string name="button_today">今天</string>
@@ -19,4 +21,11 @@
     <string name="text_calendar_begin_time">开始时间</string>
     <string name="text_calendar_end_time">结束时间</string>
     <string name="text_OK">确定</string>
+    <string name="config_file_path">config</string>
+    <string name="text_username">用户名</string>
+    <string name="text_password">密码</string>
+    <string name="text_confirm">确认密码</string>
+    <string name="text_register">注册</string>
+    <string name="text_password_confirm_failed">密码不一致</string>
+    <string name="text_password_empty">密码为空</string>
 </resources>
