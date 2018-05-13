@@ -1,6 +1,8 @@
 package com.hfnu.corgan.mybasiccalendar;
 
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.os.Handler;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,15 +11,22 @@ public class Users {
     String username;
     String password;
     SharedPreferences share;
+    Resources resources;
+    Handler handler;
 
-    public Users(SharedPreferences share) {
+    public Users(Resources resources, SharedPreferences share, Handler handler) {
         password = username = "";
         this.share = share;
+        this.handler = handler;
+        this.resources = resources;
     }
 
     public Boolean login(String username, String password){
         this.username = username;
         this.password = encrypt(password);
+        final String urlStr = resources.getString(R.string.server_url) + "?username=" + username + "&password=" + password;
+        Thread thread = new Thread(new JsonThread(resources, urlStr, handler));
+        thread.start();
         SharedPreferences.Editor editor = share.edit();
         editor.putString("username", username);
         editor.putString("password", encrypt(password));

@@ -15,6 +15,7 @@ public class UsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.users);
 
+        // 用户注册
         Button reg = findViewById(R.id.user_register);
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +49,8 @@ public class UsersActivity extends AppCompatActivity {
                 btn.setVisibility(View.INVISIBLE);
             }
         });
+
+        // 用户登录
         Button login = findViewById(R.id.user_login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override

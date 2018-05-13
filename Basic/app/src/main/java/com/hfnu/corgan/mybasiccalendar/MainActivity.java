@@ -17,15 +17,19 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     Users users;
+    JsonHandler jsonHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 绑定布局文件
         setContentView(R.layout.first_layout);
 
+        jsonHandler = new JsonHandler();
+
         // 初始化用户类
         SharedPreferences share = getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
-        users = new Users(share);
+        Resources resources = getResources();
+        users = new Users(resources, share, jsonHandler);
 
         // 日期GridView
         final CalendarGridAdapter gridAdapter = new CalendarGridAdapter(this, Calendar.getInstance());
