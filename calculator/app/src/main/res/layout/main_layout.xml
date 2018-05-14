@@ -12,7 +12,13 @@
         android:scrollbars="vertical"
         android:singleLine="false"
         android:textSize="25dp"
+        android:id="@+id/history"></TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/equation"
+        android:gravity="right"
+        android:textSize="25dp"
         android:text="请输入："></TextView>
     <GridLayout
         android:layout_width="match_parent"

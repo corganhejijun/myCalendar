@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     String equation;
+    ArrayList<String> history;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,20 +20,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_layout);
 
         equation = "";
-        TextView textView = findViewById(R.id.equation);
+        history = new ArrayList<>();
+        for (int i = 0; i < 8; i++)
+            history.add("");
+        TextView textView = findViewById(R.id.history);
         textView.setMovementMethod(ScrollingMovementMethod.getInstance());
 
-        Button backword = findViewById(R.id.backword);
-        backword.setOnClickListener(new View.OnClickListener(){
+        Button backward = findViewById(R.id.backword);
+        backward.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View view) {
-                equation = equation.substring(0, equation.length() - 2);
+                if (equation.equals(""))
+                    return;
+                equation = equation.substring(0, equation.length() - 1);
+                TextView textView = findViewById(R.id.equation);
+                textView.setText(equation);
             }
         });
         Button clear = findViewById(R.id.clear);
-        backword.setOnClickListener(new View.OnClickListener(){
+        clear.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 equation = "";
+                TextView textView = findViewById(R.id.equation);
+                textView.setText("请输入：");
             }
         });
         Button d0 = findViewById(R.id.d0);
@@ -68,9 +80,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 double result = FormulaParser.getResult(equation);
-                equation += "\n=" + result + "\n";
-                TextView textView = findViewById(R.id.equation);
-                textView.setText(equation);
+                history.add(equation);
+                history.remove(0);
+                history.add("=" + result);
+                history.remove(0);
+                TextView textView = findViewById(R.id.history);
+                String str = "";
+                for (String s : history){
+                    str += s + "\n";
+                }
+                equation = "";
+                textView.setText(str);
+                TextView equationView = findViewById(R.id.equation);
+                equationView.setText("请输入：");
             }
         });
     }
