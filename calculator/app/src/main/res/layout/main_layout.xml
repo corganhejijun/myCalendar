@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="248dp"
+        android:layout_weight="20"
+        android:gravity="right"
+        android:layout_gravity="bottom"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:textSize="25dp"
+        android:id="@+id/equation"
+        android:text="请输入："></TextView>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:rowCount="5"
+        android:columnCount="4"
+        android:orientation="horizontal">
+        <Button android:id="@+id/backword"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill"
+            android:text="退格"/>
+        <Button android:id="@+id/clear"
+            android:layout_columnSpan="2"
+            android:layout_gravity="fill"
+            android:text="清零"/>
+        <Button android:id="@+id/d7"
+            android:text="7"/>
+        <Button android:id="@+id/d8"
+            android:text="8"/>
+        <Button android:id="@+id/d9"
+            android:text="9"/>
+        <Button android:id="@+id/divide"
+            android:layout_gravity="fill"
+            android:text="÷"/>
+        <Button android:id="@+id/d4"
+            android:text="4"/>
+        <Button android:id="@+id/d5"
+            android:text="5"/>
+        <Button android:id="@+id/d6"
+            android:text="6"/>
+        <Button android:id="@+id/multiply"
+            android:layout_gravity="fill"
+            android:text="x"/>
+        <Button android:id="@+id/d1"
+            android:text="1"/>
+        <Button android:id="@+id/d2"
+            android:text="2"/>
+        <Button android:id="@+id/d3"
+            android:text="3"/>
+        <Button android:id="@+id/minus"
+            android:layout_gravity="fill"
+            android:text="-"/>
+        <Button android:id="@+id/d0"
+            android:text="0"/>
+        <Button android:id="@+id/dPoint"
+            android:text="."/>
+        <Button android:id="@+id/equal"
+            android:text="="/>
+        <Button android:id="@+id/plus"
+            android:layout_gravity="fill"
+            android:text="+"/>
+    </GridLayout>
+</LinearLayout>
