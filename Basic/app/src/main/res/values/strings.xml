@@ -5,6 +5,7 @@
     <string name="message_login_success">登录成功</string>
     <string name="message_login_fail">登录失败</string>
     <string name="message_register_success">注册成功</string>
+    <string name="message_register_failed">注册失败</string>
     <string name="text_monday">星期一</string>
     <string name="text_tuesday">星期二</string>
     <string name="text_wensday">星期三</string>
