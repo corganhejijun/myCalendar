@@ -21,21 +21,28 @@ public class Users {
         this.resources = resources;
     }
 
-    public Boolean login(String username, String password){
+    public Boolean login(String username, String password) {
+        return login(username, password, false);
+    }
+
+    private Boolean login(String username, String password, Boolean register){
         this.username = username;
         this.password = encrypt(password);
-        final String urlStr = resources.getString(R.string.server_url) + "?username=" + username + "&password=" + password;
+        String urlStr = resources.getString(R.string.server_url) + "?username=" + username + "&password=" + this.password;
+        if (register){
+            urlStr += "&register";
+        }
         Thread thread = new Thread(new JsonThread(resources, urlStr, handler));
         thread.start();
         SharedPreferences.Editor editor = share.edit();
         editor.putString("username", username);
-        editor.putString("password", encrypt(password));
+        editor.putString("password", this.password);
         editor.apply();
         return true;
     }
 
     public Boolean register(String username, String password){
-        return login(username, password);
+        return login(username, password, true);
     }
 
     public void logout(){

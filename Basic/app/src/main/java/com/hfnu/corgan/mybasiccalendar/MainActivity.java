@@ -18,13 +18,14 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
     Users users;
     JsonHandler jsonHandler;
+    Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 绑定布局文件
         setContentView(R.layout.first_layout);
 
-        jsonHandler = new JsonHandler();
+        jsonHandler = new JsonHandler(this);
 
         // 初始化用户类
         SharedPreferences share = getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
@@ -78,12 +79,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == getResources().getInteger(R.integer.login_ok)){
-            Toast.makeText(this, R.string.message_login_success, Toast.LENGTH_SHORT).show();
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
 
         }
         else if (resultCode == getResources().getInteger(R.integer.register_ok)){
-            Toast.makeText(this, R.string.message_register_success, Toast.LENGTH_SHORT).show();
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
         }
     }
@@ -94,9 +93,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences share = getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
         String password = share.getString("password", "");
         String username = share.getString("username", "");
-        if (!users.checkLogin(username, password)){
-            Toast.makeText(this, username + " " + getResources().getString(R.string.message_login_fail), Toast.LENGTH_SHORT).show();
-        }
+        users.checkLogin(username, password);
+        this.menu = menu;
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -119,16 +117,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        String username = users.username;
+    public void onLoginSuccess(){
         MenuItem item = menu.findItem(R.id.user_item);
-        if (username.equals("")){
-            item.setTitle(getResources().getString(R.string.menu_user));
+        SharedPreferences share = getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
+        String username = share.getString("username", "");
+        item.setTitle(getResources().getString(R.string.menu_logout) + " " + username);
+        Toast.makeText(this, R.string.message_login_success, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onFailed(String event){
+        SharedPreferences share = getSharedPreferences(getResources().getString(R.string.config_file_path), MODE_PRIVATE);
+        String username = share.getString("username", "");
+        if (event.equals("login")){
+            Toast.makeText(this, username + " " + getResources().getString(R.string.message_login_fail), Toast.LENGTH_SHORT).show();
         }
-        else{
-            item.setTitle(getResources().getString(R.string.menu_logout) + " " + username);
+        else if (event.equals("register")){
+            Toast.makeText(this, R.string.message_register_failed, Toast.LENGTH_SHORT).show();
         }
-        return super.onPrepareOptionsMenu(menu);
     }
 }
