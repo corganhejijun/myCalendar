@@ -18,6 +18,13 @@
         </activity>
         <activity android:name=".AddCalendarActivity"></activity>
         <activity android:name=".UsersActivity"></activity>
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="你的开发者Key"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 </manifest>
