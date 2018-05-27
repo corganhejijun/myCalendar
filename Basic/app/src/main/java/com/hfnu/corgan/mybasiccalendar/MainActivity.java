@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (resultCode == getResources().getInteger(R.integer.register_ok)){
             users.register(data.getStringExtra("username"), data.getStringExtra("password"));
+        }
+        else if (resultCode == getResources().getInteger(R.integer.add_calendar_ok)) {
+            String date = data.getStringExtra("date");
+            String title = data.getStringExtra("title");
+            String beginTime = data.getStringExtra("beginTime");
+            String endTime = data.getStringExtra("endTime");
+            String position = data.getStringExtra("position");
+            Log.v("add calendar ok:", " title: " + title + " date: " + date + " begin: " + beginTime + " end: " + endTime + " position: " + position);
         }
     }
 
