@@ -12,6 +12,14 @@ public class Card {
         this.number = number;
     }
 
+    boolean checkValid(){
+        if (type < 1 || type > 5)
+            return false;
+        if (number < 1 || type > 13)
+            return false;
+        return true;
+    }
+
     String getType(){
         switch (type){
             case 1:

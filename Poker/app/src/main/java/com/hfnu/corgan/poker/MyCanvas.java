@@ -36,7 +36,7 @@ public class MyCanvas extends View {
         int totalWidth = dm.widthPixels;
         player1 = new Player(20, 20, 320, 320);
         player2 = new Player(totalWidth - 320, 20, totalWidth - 20, 320);
-        myPlayer = new Player(20, 500, totalWidth - 20, 800);
+        myPlayer = new Player(20, 800, totalWidth - 20, 1100);
         myPlayer.setMyPlayer();
     }
 

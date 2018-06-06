@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
         equal.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                if (equation.length() == 0)
+                    return;
                 double result = FormulaParser.getResult(equation);
-                history.add(equation);
-                history.remove(0);
-                history.add("=" + result);
+                history.add(equation + "=" + result);
                 history.remove(0);
                 TextView textView = findViewById(R.id.history);
                 String str = "";
@@ -98,17 +98,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private View.OnClickListener buttonClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Button btn = (Button) view;
-            if (btn.getId() == R.id.divide)
-                equation += "/";
-            else if (btn.getId() == R.id.multiply)
-                equation += "*";
-            else
-                equation += btn.getText().toString();
-            TextView textView = findViewById(R.id.equation);
-            textView.setText(equation);
-        }
+                @Override
+                public void onClick(View view) {
+                    Button btn = (Button) view;
+                    if (btn.getId() == R.id.divide)
+                        ifOper("/");
+                    else if (btn.getId() == R.id.multiply)
+                        ifOper("*");
+                    else {
+                        ifOper(btn.getText().toString());
+                    }
+                    TextView textView = findViewById(R.id.equation);
+                    textView.setText(equation);
+                }
     };
+     void ifOper(String btnString){
+         if (equation.length() == 0) {
+             equation += btnString;
+             return;
+         }
+         String lastChar = equation.substring(equation.length() - 1);
+         if ("/*+-.".contains(lastChar)) {
+             if ("/*+-".contains(btnString) == true) {
+                 equation = equation.substring(0, equation.length() - 1) + btnString;
+                 return;
+             }
+             if (".".equals(btnString)) {
+                 return;
+             }
+         }
+         equation += btnString;
+     }
 }

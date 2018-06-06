@@ -42,6 +42,7 @@ public class Player {
     }
 
     void setCard(){
+
         playerCardList.add(new Card(1, 2));
         playerCardList.add(new Card(2, 2));
         playerCardList.add(new Card(3, 2));
@@ -60,7 +61,9 @@ public class Player {
     void drawMyArea(Canvas canvas){
         int i = 0;
         for (Card card : playerCardList){
-            card.draw(cardAreaLeftTop.x + i * 80, cardAreaLeftTop.y, canvas);
+            int top = i / 10;
+            int left = i % 10;
+            card.draw(cardAreaLeftTop.x + left * 80, cardAreaLeftTop.y + top * 300, canvas);
             i++;
         }
     }

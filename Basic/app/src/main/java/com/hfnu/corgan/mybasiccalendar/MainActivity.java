@@ -79,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (data == null)
+            return;
         if (resultCode == getResources().getInteger(R.integer.login_ok)){
             users.login(data.getStringExtra("username"), data.getStringExtra("password"));
 
