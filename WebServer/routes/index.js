@@ -31,9 +31,9 @@ router.get('/json', function (req, res, next) {
     res.send("method error");
 });
 
-function addCalendar(res, param){
+function addCalendar(res, param, req){
   var sqlStr = "INSERT INTO 'schedule' (userId,start,end,comment,position,title,date) VALUES \
-              ('" + param.user + "','" + param.start + "','" + param.end + "','" + param.comment + "','"
+              ('" + req.session.username + "','" + param.start + "','" + param.end + "','" + param.comment + "','"
               + param.position + "','" + param.title + "','" + param.date + "')";
   console.log(sqlStr);
   db.run(sqlStr, function(err){
@@ -75,7 +75,6 @@ function register(res, req) {
   db.run(sqlStr, function (err) {
     if (err != null) {
       req.session.username = username;
-      req.session.save();
       res.send(JSON.stringify({ event: "register", result: false, msg: err }));
     }
     else {
